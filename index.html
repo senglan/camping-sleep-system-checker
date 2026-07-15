@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Will I Sleep Warm? — Backcountry Sleep-System Checker</title>
+  <meta name="description" content="Tell it your forecast low, bag rating, pad R-value, and shelter, and it estimates how cold you can comfortably sleep — and what to change if you'll be shivering." />
+  <meta name="theme-color" content="#1f3d2f" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Will I Sleep Warm? — Backcountry Sleep-System Checker" />
+  <meta property="og:description" content="Sanity-check your camping sleep system before the trip. Estimate your real comfort temperature and fix the weak link." />
+  <meta property="og:url" content="https://senglan.github.io/camping-sleep-system-checker/" />
+
+  <!-- Google tag (gtag.js) — this page's own GA4 property. Replaced with the real Measurement ID on deploy. -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <h1>Will I Sleep Warm?</h1>
+      <p class="tagline">A backcountry sleep-system checker</p>
+      <p class="intro">
+        I've spent too many nights curled up shivering because I trusted a bag's rating and forgot the
+        cold creeping up through a thin pad. So I built this. Punch in what you're actually bringing and
+        it'll estimate how cold you can sleep comfortably — and tell you the one thing to change if the
+        numbers don't add up. It's an estimate, not a guarantee, so always leave yourself a margin.
+      </p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <form id="checker" novalidate>
+      <div class="grid">
+        <fieldset>
+          <legend>The night</legend>
+
+          <label for="forecastLow">Forecast overnight low (°F)
+            <input type="number" id="forecastLow" name="forecastLow" inputmode="numeric" step="1" placeholder="e.g. 28" required />
+          </label>
+
+          <label for="wind">Wind exposure at your site
+            <select id="wind" name="wind">
+              <option value="0">Sheltered (trees, walls, a hollow)</option>
+              <option value="2" selected>Moderate breeze</option>
+              <option value="5">Exposed (ridge, open desert, above treeline)</option>
+            </select>
+          </label>
+
+          <label for="conditions">Conditions
+            <select id="conditions" name="conditions">
+              <option value="0" selected>Dry</option>
+              <option value="3">Damp / heavy dew</option>
+              <option value="6">Wet / lots of condensation</option>
+            </select>
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Your kit</legend>
+
+          <label for="bagRating">Bag or quilt comfort rating (°F)
+            <input type="number" id="bagRating" name="bagRating" inputmode="numeric" step="1" placeholder="e.g. 20" required />
+            <small>Use the <em>comfort</em> rating if you have it — not the "limit" or "extreme" number.</small>
+          </label>
+
+          <label for="padR">Sleeping pad R-value
+            <input type="number" id="padR" name="padR" inputmode="decimal" step="0.1" placeholder="e.g. 2.5" required />
+            <small>On the pad's spec sheet. Bare ground / no pad ≈ 0.</small>
+          </label>
+
+          <label for="shelter">Shelter
+            <select id="shelter" name="shelter">
+              <option value="tent2">Enclosed double-wall tent</option>
+              <option value="tent1">Single-wall tent</option>
+              <option value="bivy">Bivy sack</option>
+              <option value="tarp">Tarp / floorless</option>
+              <option value="hammock">Hammock</option>
+              <option value="cowboy">Cowboy camping (no shelter)</option>
+            </select>
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <legend>What you'll sleep in</legend>
+          <p class="hint">Beyond a base layer (a base layer is already assumed).</p>
+          <div class="checks">
+            <label class="check"><input type="checkbox" name="clothing" value="6" /> Insulated jacket / puffy</label>
+            <label class="check"><input type="checkbox" name="clothing" value="4" /> Insulated pants</label>
+            <label class="check"><input type="checkbox" name="clothing" value="4" /> Warm hat / beanie</label>
+            <label class="check"><input type="checkbox" name="clothing" value="2" /> Wool socks</label>
+            <label class="check"><input type="checkbox" name="clothing" value="6" /> Sleeping-bag liner</label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>How you sleep</legend>
+          <div class="radios">
+            <label class="radio"><input type="radio" name="sleeper" value="8" /> I sleep cold</label>
+            <label class="radio"><input type="radio" name="sleeper" value="0" checked /> Average</label>
+            <label class="radio"><input type="radio" name="sleeper" value="-8" /> I sleep warm</label>
+          </div>
+        </fieldset>
+      </div>
+
+      <button type="submit" id="run">Check my setup</button>
+    </form>
+
+    <section id="result" class="result" hidden aria-live="polite"></section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="disclaimer">
+        <strong>Read this:</strong> this is a rough estimate built on rules of thumb, not a lab. Bag
+        ratings, your metabolism, altitude, hydration, and food all move the real number. When it's
+        genuinely cold, being wrong is dangerous — build in a margin, carry a backup layer, and know the
+        signs of hypothermia.
+      </p>
+      <p class="src">
+        Open source · <a href="https://github.com/senglan/camping-sleep-system-checker">code &amp; how the math works on GitHub</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
