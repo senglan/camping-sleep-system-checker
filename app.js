@@ -122,33 +122,33 @@
 
     var verdict, cls, blurb;
     if (margin >= 10) {
-      verdict = "You're set — with room to spare"; cls = "good";
-      blurb = "Your setup should handle this night comfortably, with a genuine cushion if it gets colder than forecast.";
+      verdict = "Comfortable"; cls = "good";
+      blurb = "Your comfort limit is well below the forecast low.";
     } else if (margin >= 3) {
-      verdict = "Should be comfortable"; cls = "good";
-      blurb = "You're on the right side of the line. Not a huge margin, but you should sleep fine.";
+      verdict = "Comfortable"; cls = "good";
+      blurb = "Your comfort limit is below the forecast low, with a small margin.";
     } else if (margin >= -3) {
-      verdict = "Right at the edge"; cls = "warn";
-      blurb = "This is a coin-flip night. You might be okay, but a few degrees colder than forecast and you'll feel it. Tighten up the weak link below.";
+      verdict = "Marginal"; cls = "warn";
+      blurb = "Your comfort limit is about the same as the forecast low.";
     } else if (margin >= -12) {
-      verdict = "Expect a cold night"; cls = "bad";
-      blurb = "Your setup is short for this forecast. You can probably get through it, but plan on being uncomfortable — and fix what you can.";
+      verdict = "Too cold"; cls = "bad";
+      blurb = "Your comfort limit is above the forecast low. Expect to be cold.";
     } else {
-      verdict = "Too cold — change your setup"; cls = "bad";
-      blurb = "This is a real gap, not a rounding error. Don't count on toughing it out; add warmth before you go.";
+      verdict = "Too cold"; cls = "bad";
+      blurb = "Your comfort limit is well above the forecast low.";
     }
 
     // --- Recommendations, ordered by what's hurting most ---
     var recs = [];
-    if (padShift >= 4) recs.push("Your pad is the weak link. Cold sinks through it faster than any layer can fix. Add a cheap closed-cell foam pad underneath (stacks on ~2 R-value) or bring a warmer pad.");
-    if (conditionsVal >= 3) recs.push("Damp kills insulation. Vent your shelter to cut condensation, keep your bag off wet ground, and don't breathe into the bag.");
-    if (windShift >= 5) recs.push("Wind is stripping your heat. Move to a sheltered spot, put your back to the wind, or build a simple wind break.");
-    if (!hasClothing("Warm hat")) recs.push("Sleep in a warm hat. It's the cheapest few degrees you'll ever find — you lose a lot of heat from your head.");
-    if (!hasClothing("liner")) recs.push("A sleeping-bag liner adds real warmth for a few ounces and keeps your bag cleaner.");
-    if (shelterKey === "hammock") recs.push("In a hammock, get an underquilt. A pad alone compresses under you and leaves cold spots — this is the #1 hammock mistake.");
-    if (margin < -3 && clothing < 6) recs.push("Wear your insulated jacket to bed. Dry puffy layers inside the bag are warmth you already packed.");
-    if (margin >= 15) recs.push("You're actually over-built for this night — you could vent the bag or leave a layer home. Nice problem to have.");
-    if (recs.length === 0) recs.push("Nothing glaring to fix. Keep a dry layer in reserve and you're in good shape.");
+    if (padShift >= 4) recs.push("Pad is the weak link. Add a closed-cell foam pad underneath (about +2 R-value) or use a warmer pad.");
+    if (conditionsVal >= 3) recs.push("Vent the shelter to cut condensation and keep the bag off wet ground; damp insulation loses warmth.");
+    if (windShift >= 5) recs.push("Move to a sheltered spot or set up a wind break; wind is a major source of heat loss here.");
+    if (!hasClothing("Warm hat")) recs.push("Sleep in a warm hat; significant heat is lost from the head.");
+    if (!hasClothing("liner")) recs.push("Add a sleeping-bag liner for extra warmth.");
+    if (shelterKey === "hammock") recs.push("In a hammock, add an underquilt; a pad alone compresses and leaves cold spots underneath.");
+    if (margin < -3 && clothing < 6) recs.push("Wear an insulated jacket to bed for extra warmth.");
+    if (margin >= 15) recs.push("Setup is warmer than this night needs; you could vent the bag or carry less.");
+    if (recs.length === 0) recs.push("No significant weak points. Keep a dry layer in reserve.");
 
     render({
       verdict: verdict, cls: cls, blurb: blurb,
@@ -194,9 +194,9 @@
           '<div class="stat"><span class="k">Forecast low</span><span class="v">' + Math.round(r.forecastLow) + '°<small>F</small></span></div>' +
           '<div class="stat"><span class="k">Margin</span><span class="v">' + fmt(r.margin) + '<small>F</small></span></div>' +
         '</div>' +
-        '<h3 class="sub">What went into that</h3>' +
+        '<h3 class="sub">Breakdown</h3>' +
         '<ul class="breakdown">' + breakdown + '</ul>' +
-        '<h3 class="sub">What I\'d do</h3>' +
+        '<h3 class="sub">Recommendations</h3>' +
         '<ul class="recs">' + recItems + '</ul>' +
       '</div>';
 

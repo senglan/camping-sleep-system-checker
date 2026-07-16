@@ -61,11 +61,17 @@ fieldset {
   box-shadow: var(--shadow);
 }
 legend {
+  /* float + full width pulls the legend out of the border so the card edge is
+     unbroken and the title reads as a normal heading at the top of the card */
+  float: left;
+  width: 100%;
+  padding: 0;
+  margin: 0 0 .9rem;
   font-weight: 700;
   color: var(--pine);
-  padding: 0 .4rem;
   font-size: .95rem;
 }
+legend + * { clear: both; }
 
 label {
   display: block;
