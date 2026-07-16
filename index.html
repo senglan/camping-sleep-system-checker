@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>tmt.page</title>
-  <meta name="description" content="Small single-purpose web tools, each at its own path." />
+  <meta name="description" content="Take me to a tool." />
   <meta name="theme-color" content="#141a17" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%E2%9E%A1%EF%B8%8F</text></svg>" />
   <style>
@@ -19,17 +19,28 @@
       background: #141a17;
       padding: 2rem;
     }
-    main { max-width: 34rem; }
-    h1 { margin: 0 0 .4rem; font-size: 2rem; letter-spacing: -0.02em; }
-    p { margin: 0; color: #9fb0a5; }
-    code { background: #1f2a24; padding: .1rem .4rem; border-radius: 6px; color: #e9e3d5; }
-    a { color: #d98a2b; }
+    main { width: min(28rem, 90vw); }
+    h1 { margin: 0 0 1.2rem; font-size: 2rem; letter-spacing: -0.02em; }
+    ul { list-style: none; margin: 0; padding: 0; }
+    li + li { margin-top: .5rem; }
+    a {
+      display: block;
+      padding: .7rem .9rem;
+      border: 1px solid #2a352e;
+      border-radius: 10px;
+      color: #e9e3d5;
+      text-decoration: none;
+      background: #1b231e;
+    }
+    a:hover { border-color: #d98a2b; color: #fff; }
   </style>
 </head>
 <body>
   <main>
-    <h1>tmt.page</h1>
-    <p>Single-purpose tools, each at its own path — e.g. <code><a href="/camping/">tmt.page/camping</a></code>.</p>
+    <h1>Take Me To</h1>
+    <ul>
+      <li><a href="/camping/">Am I Warm?</a></li>
+    </ul>
   </main>
 </body>
 </html>
