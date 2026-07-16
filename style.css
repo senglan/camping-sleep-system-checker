@@ -34,7 +34,7 @@ body {
 .site-header {
   background: linear-gradient(160deg, var(--pine) 0%, var(--pine-deep) 100%);
   color: var(--sand);
-  padding: 2.4rem 0 2rem;
+  padding: 1.6rem 0;
   border-bottom: 4px solid var(--amber);
 }
 .site-header h1 {
@@ -42,15 +42,6 @@ body {
   font-size: clamp(1.9rem, 4vw, 2.7rem);
   letter-spacing: -0.02em;
 }
-.tagline {
-  margin: .2rem 0 1rem;
-  text-transform: uppercase;
-  letter-spacing: .18em;
-  font-size: .78rem;
-  color: var(--amber);
-  font-weight: 600;
-}
-.intro { margin: 0; max-width: 60ch; color: #d9d3c4; }
 
 /* Form */
 main { padding: 2rem 0 3rem; }
@@ -194,16 +185,7 @@ ul.breakdown .amt { font-variant-numeric: tabular-nums; font-weight: 700; white-
 
 .err { color: var(--bad); font-weight: 600; padding: 1rem 1.4rem; margin: 0; }
 
-/* Footer */
-.site-footer {
-  background: var(--pine-deep);
-  color: #cdd3c6;
-  padding: 1.8rem 0 2.4rem;
-  font-size: .9rem;
-}
-.disclaimer { margin: 0 0 .8rem; max-width: 68ch; }
-.site-footer a { color: var(--amber); }
-.src { margin: 0; opacity: .85; }
+main { padding-bottom: 3rem; }
 
 @media (max-width: 620px) {
   .grid { grid-template-columns: 1fr; }
