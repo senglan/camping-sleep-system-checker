@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Am I Warm?</title>
+  <meta name="description" content="Estimate the coldest temperature your camping sleep system will keep you comfortable, from your bag rating, pad R-value, shelter, and conditions." />
+  <meta name="theme-color" content="#1f3d2f" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%E2%9B%BA</text></svg>" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Am I Warm?" />
+  <meta property="og:description" content="Estimate the coldest temperature your camping sleep system will keep you comfortable, from your bag rating, pad R-value, shelter, and conditions." />
+  <meta property="og:url" content="https://tmt.page/camping/" />
+
+  <!-- Google tag (gtag.js) — this page's own GA4 property -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5HM7FS5JFQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-5HM7FS5JFQ');
+  </script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <h1>Am I Warm?</h1>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <form id="checker" novalidate>
+      <div class="grid">
+        <fieldset>
+          <legend>The night</legend>
+
+          <label for="forecastLow">Forecast overnight low (°F)
+            <input type="number" id="forecastLow" name="forecastLow" inputmode="numeric" step="1" placeholder="e.g. 28" required />
+          </label>
+
+          <label for="wind">Wind exposure at your site
+            <select id="wind" name="wind">
+              <option value="0">Sheltered (trees, walls, a hollow)</option>
+              <option value="2" selected>Moderate breeze</option>
+              <option value="5">Exposed (ridge, open desert, above treeline)</option>
+            </select>
+          </label>
+
+          <label for="conditions">Conditions
+            <select id="conditions" name="conditions">
+              <option value="0" selected>Dry</option>
+              <option value="3">Damp / heavy dew</option>
+              <option value="6">Wet / lots of condensation</option>
+            </select>
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Your kit</legend>
+
+          <label for="bagRating">Bag or quilt comfort rating (°F)
+            <input type="number" id="bagRating" name="bagRating" inputmode="numeric" step="1" placeholder="e.g. 20" required />
+            <small>Use the <em>comfort</em> rating if you have it — not the "limit" or "extreme" number.</small>
+          </label>
+
+          <label for="padR">Sleeping pad R-value
+            <input type="number" id="padR" name="padR" inputmode="decimal" step="0.1" placeholder="e.g. 2.5" required />
+            <small>On the pad's spec sheet. Bare ground / no pad ≈ 0.</small>
+          </label>
+
+          <label for="shelter">Shelter
+            <select id="shelter" name="shelter">
+              <option value="tent2">Enclosed double-wall tent</option>
+              <option value="tent1">Single-wall tent</option>
+              <option value="bivy">Bivy sack</option>
+              <option value="tarp">Tarp / floorless</option>
+              <option value="hammock">Hammock</option>
+              <option value="cowboy">Cowboy camping (no shelter)</option>
+            </select>
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <legend>What you'll sleep in</legend>
+          <p class="hint">Beyond a base layer (a base layer is already assumed).</p>
+          <div class="checks">
+            <label class="check"><input type="checkbox" name="clothing" value="6" /> Insulated jacket / puffy</label>
+            <label class="check"><input type="checkbox" name="clothing" value="4" /> Insulated pants</label>
+            <label class="check"><input type="checkbox" name="clothing" value="4" /> Warm hat / beanie</label>
+            <label class="check"><input type="checkbox" name="clothing" value="2" /> Wool socks</label>
+            <label class="check"><input type="checkbox" name="clothing" value="6" /> Sleeping-bag liner</label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>How you sleep</legend>
+          <div class="radios">
+            <label class="radio"><input type="radio" name="sleeper" value="8" /> I sleep cold</label>
+            <label class="radio"><input type="radio" name="sleeper" value="0" checked /> Average</label>
+            <label class="radio"><input type="radio" name="sleeper" value="-8" /> I sleep warm</label>
+          </div>
+        </fieldset>
+      </div>
+
+      <button type="submit" id="run">Check my setup</button>
+    </form>
+
+    <section id="result" class="result" hidden aria-live="polite"></section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

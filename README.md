@@ -1,25 +1,14 @@
-# Am I Warm?
+# tmt.page
 
-A camping sleep-system calculator. Estimates the coldest temperature you'll comfortably sleep at from your bag rating, sleeping pad R-value, shelter, wind, conditions, layers, and whether you sleep warm or cold — and flags the weak link.
+Small, single-purpose web tools. Each lives at its own path under the domain and is self-contained in its own folder with its own analytics.
 
-**Live:** https://senglan.github.io/camping-sleep-system-checker/
+| Path | Tool |
+|------|------|
+| [`/camping/`](camping/) | Am I Warm? — camping sleep-system checker |
 
-## How the estimate works
+## Structure
 
-Starts from the bag's comfort rating, then shifts it warmer or colder for:
-
-- **Pad R-value** vs. what the ground needs at that temperature (weighted most heavily)
-- **Layers** worn to sleep
-- **Shelter** type
-- **Wind** exposure
-- **Damp/wet** conditions
-- **Warm/cold sleeper**
-
-The result is compared to the forecast low to produce the margin and verdict. It's a rule-of-thumb estimate, not a lab measurement. All logic is in [`app.js`](app.js).
-
-## Stack
-
-Static HTML/CSS/JS, no build step or dependencies. Deployed on GitHub Pages.
+Each tool is a folder with its own `index.html`, styles, and script — no shared framework, no build step. Deployed on GitHub Pages at the `tmt.page` custom domain.
 
 ## License
 
